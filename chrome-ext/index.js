@@ -31,7 +31,7 @@
                 console.log(jsonResponse);
 
                 if (jsonResponse != null && jsonResponse["classification"] == 0) {
-                    var newContent = el.innerHTML.replace(/.*/s, "ANTI-HATE SPEECH PLUGIN: This Tweet has been classified as hate speech and will be hidden.");
+                    var newContent = el.innerHTML.replace(/.*/s, "ANTI-HATE SPEECH PLUGIN: 악플이 감지되었습니다. 입력 전 다시 생각해보자.");
                     if (newContent != el.innerHTML) {
                         el.innerHTML = newContent;
                     }

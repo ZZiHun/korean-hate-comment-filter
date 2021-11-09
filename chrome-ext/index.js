@@ -1,8 +1,7 @@
 (function () {
-
     var processedComments = [];
-
-    function replaceTweets() {
+    var badWords = []
+    function warnBadComment() {
         var newProcessedComment = [];
         var youtubeCommentBox = document.querySelectorAll("#contenteditable-root");
         console.log(youtubeCommentBox);
@@ -18,7 +17,7 @@
             http.responseType = 'json';
 
             var comment = (el.textContent === undefined) ? el.innerText : el.textContent;
-            newProcessedComment.push(tweet)
+            newProcessedComment.push(comment)
 
             if (!processedComments.includes(comment)) {
                 http.send(JSON.stringify({
@@ -36,7 +35,7 @@
                         el.innerHTML = newContent;
                     }
                 } else {
-                    tokens = tweet.split(" ")
+                    tokens = comment.split(" ")
                     for (var i = 0; i < tokens.length; i += 1) {
                         if (badWords.includes(tokens[i])) {
                             var newContent = el.innerHTML.replace(tokens[i], "****");
@@ -56,7 +55,7 @@
     function tick() {
         // If it determines hate speech of offensive language (0/1)
 
-        replaceTweets();
+        warnBadComment();
         window.setTimeout(tick, 100);
     }
 

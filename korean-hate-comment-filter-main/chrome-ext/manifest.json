@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "악플 차단기(임시이름)",
+    "description": "크롬 브라우저 내의 악플 작성을 사전 방지합니다.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://youtube.com/*"
+            ],
+            "js": [
+                "index.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}
